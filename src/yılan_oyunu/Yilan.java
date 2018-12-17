@@ -3,6 +3,7 @@ package yılan_oyunu;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class Yilan extends JLabel {
@@ -10,16 +11,53 @@ public class Yilan extends JLabel {
     
     public Timer mTimer = null;
     
+    public ArrayList<Kutu> Liste = new ArrayList<Kutu>();
+    
+  
+    
     Yilan()
     {
        
-        add(mHead);
+       
         addKeyListener(new KlavyeKontrol());
         setFocusable(true);
-        mTimer = new Timer(100,new TimerControl());
+        
+        mTimer = new Timer(150,new TimerControl());
         mTimer.start();
+        
+        Liste.add(mHead);
+        for(int i=1;i<10;i++)
+        {
+            KuyrukEkle();
+        }
+        
+         add(mHead);
+        
+    }
+    public void KuyrukEkle()
+    {
+        Kutu K = Liste.get(Liste.size()-1).KutuOlustur();
+            
+            Liste.add(K);
+            add(K);
     }
 
+    
+    public void HepsiniOynat()
+    {
+                  mHead.Hareket();
+
+          for(int i =Liste.size()-1; i>0; i--)
+            {
+                
+                Kutu Onceki = Liste.get(i-1);
+                Kutu Sonraki = Liste.get(i);
+                
+                Liste.get(i).Hareket();
+                Sonraki.mYon=Onceki.mYon;
+            }
+    }
+    
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -33,6 +71,9 @@ public class Yilan extends JLabel {
         
         g2.draw(rect);
     }
+  
+    
+    
     class KlavyeKontrol implements KeyListener
     {
 
@@ -74,7 +115,7 @@ public class Yilan extends JLabel {
     {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            mHead.Hareket();
+            HepsiniOynat();
         }
          
     }

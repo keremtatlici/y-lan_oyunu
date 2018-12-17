@@ -16,7 +16,6 @@ public class Yılan_oyunu {
     public static void main(String[] args) {
         
         AnaPencere a = AnaPencere.PencereGetir();
-       
         a.setVisible(true);
     }
     

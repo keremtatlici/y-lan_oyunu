@@ -12,8 +12,8 @@ import javax.swing.*;
 public class AnaPencere extends JFrame {
   
     
-    private int mGenislik = 777;
-    private int mYukseklik = 777;
+    private int mGenislik = 600;
+    private int mYukseklik = 600;
     
     
     private static AnaPencere mPencere=null;

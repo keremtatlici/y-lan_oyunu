@@ -74,7 +74,7 @@ public class Kutu extends JLabel{
                 setBounds(Posx,Posy,mGenislik , mGenislik);
     }
     
-   /* public Kutu KutuOlustur()
+      public Kutu KutuOlustur()
     {
         Kutu K =new Kutu();
         
@@ -86,8 +86,10 @@ public class Kutu extends JLabel{
         K.mYon=-mYon;
         
         K.Hareket();
-       // return Kutu;
-    }*/
+        
+        K.mYon =mYon;
+        return K;
+    }
     
     public void Hareket()
     {
