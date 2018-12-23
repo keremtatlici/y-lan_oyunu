@@ -3,53 +3,48 @@ package yılan_oyunu;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
+import yılan_oyunu.Yilan;
 
-public class AnaPencere extends JFrame {
+public class AnaPencere extends JFrame 
+{
+    private int mGenislik = 600, mYukseklik = 600;//genislik ve yükseklik
     
-    private int mGenislik = 600, mYukseklik = 600;
-    
-    
-   private static AnaPencere mPencere=null;
-   private AnaPencere()
+    private static AnaPencere mPencere=null;//static fonksiyonunda çekilmesi için 
+   
+    private AnaPencere()//pencerenin boyutunun değiştirilmemesi için private.
     {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);  
-        SetDimension(mGenislik,mYukseklik);
-        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);//Pencere kapatıldığında uygulamanında kapatılması için.
         
-        Yilan Y = new Yilan();
+        SetDimension(mGenislik,mYukseklik);//yükseklik ,genişliğini ayarlıyor.
+        setResizable(false);//Pencerenin büyültülüp küçültmesini önlemek için. 
         
+        Yilan Y = new Yilan();//Yeni Yılan ekranı
         add(Y);
     }
-    public static AnaPencere PencereGetir()
+    public static AnaPencere PencereGetir()//oluşan bir ekran varsa yenisini oluşturmamak için
     {
         if(mPencere ==null)
-        {
             return new AnaPencere();
-        } 
+        
         return mPencere;
-      
     }
-    //Bilgisayarın çözünürlüğünü çeken fonk
-    public void SetDimension (int Genislik , int Yukseklik)
+   
+    public void SetDimension (int Genislik , int Yukseklik)//Bu fonksiyon bilgisayarın çözünürlüğünü çekip pencerenin tam ortaya yerleşmesi içindir.
     {
         Dimension Dim =  Toolkit.getDefaultToolkit().getScreenSize();
         
         int PosX=0;
         int PosY=0;
         
-        if(Genislik+100>Dim.width)
-        {
+        if(Genislik+100>Dim.width)    //buradaki kod pencerenin bilgisayar çözünürlüğünü aşmasını önlemek için    
             mGenislik = Dim.width-100;
-        }
+        
         if(Yukseklik+100>Dim.height)
-        {
             Yukseklik=Dim.height-100;
-        }
+        
         PosX = (Dim.width-mGenislik)/2;
         PosY =(Dim.height-mYukseklik)/2;
         
-        setBounds(PosX, PosY, mGenislik , mYukseklik);
-                    
-        
+        setBounds(PosX, PosY, mGenislik , mYukseklik); 
     }
 }

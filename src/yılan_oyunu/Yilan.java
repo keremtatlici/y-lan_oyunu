@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
 
-public class Yilan extends JLabel {
+public class Yilan extends JLabel 
+{
     public Kutu mHead = new Kutu();
     
     public Timer mTimer = null;
@@ -17,35 +18,29 @@ public class Yilan extends JLabel {
     public Random mRandom = null;
     
     public ArrayList<Kutu> Liste = new ArrayList<Kutu>();
-    
-  
-    
+     
     Yilan()
-    {
-       
-       mRandom = new Random(System.currentTimeMillis()); 
+    {      
+        mRandom = new Random(System.currentTimeMillis()); // sistemin o an ki zamanının milisaniyesini alıyor bunu random sayı olarak döndürüyor.
         addKeyListener(new KlavyeKontrol());
-        setFocusable(true);
+        setFocusable(true);//tuşa basılınca bu classa odaklanması için.
         
-        mTimer = new Timer(100,new TimerControl());
+        mTimer = new Timer(110,new TimerControl());//Timer sayacını 0,1 saniyede bir olacak şekilde ayarlıyor
         mTimer.start();
         
-        Liste.add(mHead);
-        for(int i=1;i<10;i++)
-        {
+        Liste.add(mHead);//diziye baş kutuyu ekliyor
+        for(int i=1;i<4;i++)//3 tane kutu ekliyor
             KuyrukEkle();
-        }
         
          add(mHead);
-         add(mYem);
-        
+         add(mYem);        
     }
     public void KuyrukEkle()
     {
         Kutu K = Liste.get(Liste.size()-1).KutuOlustur();
             
-            Liste.add(K);
-            add(K);
+        Liste.add(K);
+        add(K);
     }
 
     public void YemEkle()
@@ -58,13 +53,14 @@ public class Yilan extends JLabel {
         
         PosX=PosX-PosX%20;
         PosY=PosY-PosY%20;
-        for (int i = 0; i < Liste.size(); i++) {
+        
+        for (int i = 0; i < Liste.size(); i++) 
+        {
             if ((PosX == Liste.get(i).getX()) && (PosY==Liste.get(i).getY())) {
                 YemEkle();
                 return; 
             }
         }
-        
         mYem.setPosition(PosX, PosY);
         
     }
@@ -120,7 +116,7 @@ public class Yilan extends JLabel {
         Graphics2D g2=(Graphics2D)g;
         
         Rectangle2D rect = new Rectangle2D.Double(5,5,getWidth()-10,getHeight()-10);
-        g2.setColor(Color.red);
+        g2.setColor(Color.black);
         
         g2.setStroke(new BasicStroke(10));
         

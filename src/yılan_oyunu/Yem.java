@@ -13,10 +13,6 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 
-/**
- *
- * @author Shaka Brah
- */
 public class Yem extends JLabel{
     public int mGenislik = 20;
     
@@ -33,11 +29,11 @@ public class Yem extends JLabel{
         Ellipse2D ellipse = new Ellipse2D.Double(1,1,mGenislik-2,mGenislik-2);
         g2.setColor(Color.black);
         
-        g2.setStroke(new BasicStroke(2));
+        g2.setStroke(new BasicStroke(1));
         
         g2.draw(ellipse);
         
-        g2.setColor(Color.red);
+        g2.setColor(Color.gray);
         g2.fill(ellipse);
     }
     
