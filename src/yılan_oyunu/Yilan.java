@@ -58,6 +58,12 @@ public class Yilan extends JLabel {
         
         PosX=PosX-PosX%20;
         PosY=PosY-PosY%20;
+        for (int i = 0; i < Liste.size(); i++) {
+            if ((PosX == Liste.get(i).getX()) && (PosY==Liste.get(i).getY())) {
+                YemEkle();
+                return; 
+            }
+        }
         
         mYem.setPosition(PosX, PosY);
         

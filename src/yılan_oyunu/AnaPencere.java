@@ -1,22 +1,15 @@
-
 package yılan_oyunu;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
 
-/**
- *
- * @author Shaka Brah
- */
 public class AnaPencere extends JFrame {
-  
     
-    private int mGenislik = 600;
-    private int mYukseklik = 600;
+    private int mGenislik = 600, mYukseklik = 600;
     
     
-    private static AnaPencere mPencere=null;
+   private static AnaPencere mPencere=null;
    private AnaPencere()
     {
         setDefaultCloseOperation(EXIT_ON_CLOSE);  
